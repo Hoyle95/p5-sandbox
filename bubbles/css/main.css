@@ -1,0 +1,10 @@
+html, body, main {
+    height:100%;
+    width:100%;
+    margin:0;
+    display: flex;
+    background-color:#333;
+    overflow: hidden;
+} canvas {
+    margin:auto;
+}
