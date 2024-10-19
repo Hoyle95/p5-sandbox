@@ -7,8 +7,8 @@ let ballSize,
 function setup() {
     createCanvas(windowWidth,windowHeight);
     ballSize = 50;
-    ballX = width/2;
-    ballY = height/2;
+    ballX = random(ballSize/2,width-ballSize/2);
+    ballY = random(ballSize/2,height-ballSize/2);
     ballSpeedX = 10;
     ballSpeedY = 10;
 }
@@ -28,20 +28,10 @@ function draw() {
     ballY+= ballSpeedY;
 
     //screen collision
-    //right
-    if (ballX > width-(ballSize/2)) {
+    if (ballX < 0+(ballSize/2) || ballX > width-(ballSize/2)) {
         ballSpeedX*= -1;
     }
-    //left
-    if (ballX < 0+(ballSize/2)) {
-        ballSpeedX*= -1;
-    }
-    //top
-    if (ballY < 0+(ballSize/2)) {
-        ballSpeedY*= -1;
-    }
-    //bottom
-    if (ballY > height-(ballSize/2)) {
+    if (ballY < 0+(ballSize/2) || ballY > height-(ballSize/2)) {
         ballSpeedY*= -1;
     }
 }
