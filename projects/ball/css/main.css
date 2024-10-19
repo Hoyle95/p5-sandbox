@@ -4,9 +4,7 @@ html, body, main {
     margin:0;
     display: flex;
     background-color:#333;
-}
-
-
-canvas {
+    overflow: hidden;
+} canvas {
     margin:auto;
 }
