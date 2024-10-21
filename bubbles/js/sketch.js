@@ -10,7 +10,7 @@ function drawTiles(tileSize) {
     for (let y = 0; y < height; y += tileSize) {
         for (let x = 0; x < width; x += tileSize) {
             fill(240);
-            stroke(100);
+            stroke(150);
             rect(x, y, tileSize, tileSize);
         }
     }
@@ -32,7 +32,7 @@ function mouseClicked() {
     }
 
     for (let i = 0; i < bubbles.length; i++) {
-        if (bubbles[i].mouseColiding()) {
+        if (bubbles[i].colisionCheck(mouseX,mouseY)) {
             numberOfBubbles--;
             bubbles.splice(i,1);
             bubblesPopped++;
@@ -64,18 +64,13 @@ function draw() {
         noStroke();
         fill(250, 100, 150);
         textSize(40);
-
         textAlign(LEFT);
-        text(`Bubbles ${numberOfBubbles}`, 20, 50);
-
-        textAlign(RIGHT);
-        text(`${bubblesPopped} Popped`, width - 20, 50);
-
-        noFill();
-        stroke(0);
+        text(`Bubbles: ${numberOfBubbles}`, 20, 50);
+        text(`Popped: ${bubblesPopped}`, 27, 100);
         image(muteButton, width - 70, height - 70);
 
         if (!musicEnabled) {
+            stroke(0);
             line(width - 70, height - 70, width - 20, height - 20);
             line(width - 20, height - 70, width - 70, height - 20);
         }

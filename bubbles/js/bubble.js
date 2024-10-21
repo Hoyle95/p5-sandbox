@@ -32,8 +32,8 @@ class Bubble {
         circle(this.x, this.y, this.size);
     }
 
-    mouseColiding() { 
-        if (dist(mouseX, mouseY, this.x, this.y) < (this.size / 2)) {
+    colisionCheck(x, y) { 
+        if (dist(x, y, this.x, this.y) < (this.size / 2)) {
             this.pop.play();
             return true;
         } else {
