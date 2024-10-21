@@ -4,7 +4,6 @@ let bubbles = [],
     maxBubbles = 1000,
     musicEnabled = true,
     backgroundSong,
-    pop,
     roundStarted = false;
 
 function drawTiles(tileSize) {
@@ -17,14 +16,10 @@ function drawTiles(tileSize) {
     }
 }
 
-function preload() {
-    muteButton = loadImage('/p5-sandbox/bubbles/images/mute.png');
-    backgroundSong = loadSound('/p5-sandbox/bubbles/sound/burning_purple.wav');
-    pop = loadSound('/p5-sandbox/bubbles/sound/pop.wav');
-}
-
 function setup() {
     createCanvas(windowWidth,windowHeight);
+    muteButton = loadImage('/p5-sandbox/bubbles/images/mute.png');
+    backgroundSong = new Audio("/p5-sandbox/bubbles/sound/burning_purple.wav");
 }
 
 function windowResized() {
@@ -40,7 +35,6 @@ function mouseClicked() {
         if (bubbles[i].mouseColiding()) {
             numberOfBubbles--;
             bubbles.splice(i,1);
-            pop.play();
             bubblesPopped++;
         }
     }
@@ -49,7 +43,7 @@ function mouseClicked() {
         musicEnabled = !musicEnabled;
 
         if (!musicEnabled) {
-            backgroundSong.stop();
+            backgroundSong.pause();
         }
     }
 }
@@ -86,7 +80,7 @@ function draw() {
             line(width - 20, height - 70, width - 70, height - 20);
         }
 
-        if (!backgroundSong.isPlaying() && musicEnabled) {
+        if (musicEnabled) {
             backgroundSong.play();
         }
     } else {    

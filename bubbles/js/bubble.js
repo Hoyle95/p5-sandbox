@@ -8,6 +8,7 @@ class Bubble {
         this.r = random(150, 200);
         this.g = random(100, 200);
         this.b = random(200, 250);
+        this.pop = new Audio('/p5-sandbox/bubbles/sound/pop.wav');
     }
 
     draw() {
@@ -33,6 +34,7 @@ class Bubble {
 
     mouseColiding() { 
         if (dist(mouseX, mouseY, this.x, this.y) < (this.size / 2)) {
+            this.pop.play();
             return true;
         } else {
             return false;
